@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "express": "^4.13.3",
-    "jade": "^1.11.0",
-    "sqlite3": "^3.1.0"
+    "jade": "^1.11.0"
   },
   "engines": {
     "node": "4.0.0"
