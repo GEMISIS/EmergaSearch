@@ -10,7 +10,7 @@
 // Website URL Address (Port specified below)
 #define SITE_URL "192.168.1.101"
 
-#define CLIENT_ID "Demo"
+#define CLIENT_ID "Demo Room 1"
 
 LWiFiClient c;
 
@@ -52,7 +52,7 @@ void loop()
       delay(1000);
     }
 
-    c.print("GET /?");
+    c.print("GET /motionDetected/?");
     // Send the client ID.
     c.print("client=" CLIENT_ID);
     // Sending over the sensor data.
