@@ -1,0 +1,32 @@
+{
+  "name": "EmergaSearch-Server",
+  "version": "0.0.1",
+  "description": "This is the server used to host EmergaSearch.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GEMISIS/EmergaSearch"
+  },
+  "keywords": [
+    "node",
+    "EmergaSearch",
+    "EmergaSearch-Server",
+    "Express",
+    "Emergency"
+  ],
+  "author": "Gerald McAlister",
+  "contributors": [
+    "Gerald McAlister <gerald.mcalister.gem@gmail.com> (http://www.geraldmcalister.com)",
+    "Chris VonArb <cgvonarb@gmail.com>"
+  ],
+  "license": "MIT"
+}
