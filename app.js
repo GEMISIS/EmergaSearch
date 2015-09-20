@@ -7,37 +7,38 @@ var exists = fs.existsSync(file);
 var sqlite3 = require("sqlite3").verbose();
 
 function logDebug(message) {
-        if(process.env.npm_package_config_debugInfo) {
-                console.log(message);
-        }
+    if(process.env.npm_package_config_debugInfo) {
+            console.log(message);
+    }
 }
 function dbStoreEvent(sensorid, time){
-        var db = new sqlite3.Database(file);
-        db.serialize(function(){
-                if(!exists){
-                        db.run("CREATE TABLE events (sensorid TEXT, time TEXT)");
-                }
-                var statement = db.prepare("INSERT INTO events VALUES (?,?)");
-                statement.run(sensorid, time);
-                statement.finalize();
-                });
-        });
-        db.close();
+    var db = new sqlite3.Database(file);
+    db.serialize(function(){
+        if(!exists){
+                db.run("CREATE TABLE events (sensorid TEXT, time TEXT)");
+        }
+        var statement = db.prepare("INSERT INTO events VALUES (?,?)");
+        statement.run(sensorid, time);
+        statement.finalize();
+    });
+    db.close();
 }
 function dbRetrieveEvents(){
-        var db = new sqlite3.Database(file);
-        var returned;
-        db.serialize(function(){
-                db.each("SELECT rowid AS id, sensorid, time FROM events", function(err, row){
-                //console.log(row.id + ": " + row.sensorid + row.time);
-                returned = row.id + ": " + row.sensorid + " " + row.time;
-        });
-        db.close();
-        return returned;
+    var db = new sqlite3.Database(file);
+    var returned;
+    db.serialize(function(){
+            db.each("SELECT rowid AS id, sensorid, time FROM events", function(err, row){
+            //console.log(row.id + ": " + row.sensorid + row.time);
+            returned = row.id + ": " + row.sensorid + " " + row.time;
+    	});
+    });
+    db.close();
+    return returned;
 }
 
 app.set('views', 'Jade Pages');
 app.set('view engine', 'jade');
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
         res.render('index', {
