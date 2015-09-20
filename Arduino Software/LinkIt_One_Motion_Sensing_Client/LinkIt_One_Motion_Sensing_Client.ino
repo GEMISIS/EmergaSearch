@@ -10,7 +10,7 @@
 // Website URL Address (Port specified below)
 #define SITE_URL "192.168.1.101"
 
-#define CLIENT_ID "Demo Room 1"
+#define CLIENT_ID "Demo%20Room%201"
 
 LWiFiClient c;
 
@@ -65,6 +65,8 @@ void loop()
     // Force the connection to close each time to reduce traffic on the server.
     c.println("Connection: close");
     c.println();
+    
+    delay(5000);
   }
 }
 
